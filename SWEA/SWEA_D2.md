@@ -259,12 +259,9 @@ for t in range(1, T+1):
 T = int(input())
 for t in range(1,T+1):
     N, K = map(int, input().split())
-    iarray = []
-    for i in range(N):
-        iarray.append(list(map(int, input().split())))
-    
-    
+    iarray = [list(map(int, input())) for i in range(N)]
     result = 0
+    
     for i in range(N):
         cnt_r = 0
         cnt_c = 0
