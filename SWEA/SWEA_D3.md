@@ -672,3 +672,91 @@ for t in range(1, T+1):
     print('#{} {}'.format(t, cnt))
 ```
 
+
+
+### 5948. 새샘이의 7-3-5 게임 -> 오랜만에 bubble sort
+
+```python
+T = int(input())
+for t in range(1, T + 1):
+    num_lst = list(map(int, input().split()))
+    tmp = []
+    for i in range(len(num_lst)):
+        for j in range(i+1, len(num_lst)):
+            for k in range(j+1, len(num_lst)):
+                tmp.append(num_lst[i] + num_lst[j] + num_lst[k])
+
+    res = list(set(tmp))
+
+    for i in range(len(res)-1):
+        for j in range(len(res)-1):
+            if res[j+1] < res[j]:
+                res[j], res[j+1] = res[j+1], res[j]
+
+    print('#{} {}'.format(t, res[-5]))
+```
+
+
+
+### 5688. 세제곱근을 찾아라
+
+```python
+T = int(input())
+for t in range(1, T + 1):
+    N = int(input())
+    r_N = round(N**(1/3))
+    if r_N**3 == N:
+        print('#{} {}'.format(t, r_N))
+    else:
+        print('#{} -1'.format(t))
+```
+
+
+
+### 5549. 홀수일까 짝수일까
+
+```python
+T = int(input())
+for t in range(1, T + 1):
+    N = int(input())
+    if N % 2:
+        print('#{} {}'.format(t, 'Odd'))
+    else:
+        print('#{} {}'.format(t, 'Even'))
+```
+
+
+
+### 5515. 2016년 요일 맞추기 -> 인덱스인지 요소인지 잘 확인하자
+
+```python
+T = int(input())
+for t in range(1, T + 1):
+    m, d = map(int, input().split())
+    month = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    day = -1
+    for i in range(m):
+        day += month[i]
+    day += d+4
+    res = day % 7
+    print('#{} {}'.format(t, res))
+```
+
+
+
+### 5431. 민석이의 과제 체크하기
+
+```python
+T = int(input())
+for t in range(1, T + 1):
+    N, K = map(int, input().split())
+    sub_lst = list(map(int, input().split()))
+    p_lst = [i for i in range(1, N+1)]
+    for num in sub_lst:
+        p_lst.remove(num)
+    print('#{}'.format(t), end=' ')
+    for i in p_lst:
+        print(i, end=' ')
+    print()
+```
+
