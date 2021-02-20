@@ -760,3 +760,60 @@ for t in range(1, T + 1):
     print()
 ```
 
+
+
+###  5356. 의석이의 세로로 말해요
+
+```python
+T = int(input())
+for t in range(1, T+1):
+    arr = [list(input()) for _ in range(5)]
+    res = ''
+    max_len = 0
+    # 행 길이의 최대 길이 구하기
+    for lst in arr:
+        if len(lst) > max_len:
+            max_len = len(lst)
+
+    # 행 길이가 부족한 행에 -1을 추가하여 길이를 같게 만듦
+    for lst in arr:
+        while len(lst) < max_len:
+            lst.append(-1)
+
+    # -1이 나오면 넘어가고 아니라면 더해서 문자열을 완성
+    for i in range(max_len):
+        for j in range(5):
+            if arr[j][i] == -1:
+                continue
+            res += arr[j][i]
+
+    print('#{} {}'.format(t, res))
+```
+
+
+
+### 4751. 다솔이의 다이아몬드 장식 
+
+```python
+T = int(input())
+for t in range(1, T+1):
+    str1 = input()
+    arr =['','','','','']
+    i = 0
+    for j in range(0, 4 * len(str1), 4):
+        arr[0] += '..#.'
+        arr[1] += '.#.#'
+        arr[2] += '#.{}.'.format(str1[i])
+        i += 1
+        arr[3] += '.#.#'
+        arr[4] += '..#.'
+
+    arr[0] += '.'
+    arr[1] += '.'
+    arr[2] += '#'
+    arr[3] += '.'
+    arr[4] += '.'
+    for y in arr:
+        print(y)
+```
+
