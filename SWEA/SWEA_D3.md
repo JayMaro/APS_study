@@ -817,3 +817,111 @@ for t in range(1, T+1):
         print(y)
 ```
 
+
+
+### 5215. 햄버거 다이어트 -> 부분집합으로 풀었지만 DFS를 이용하는 방식을 보니 역시 고급 알고리즘을 써야겠따.
+
+```python
+T = int(input())
+for t in range(1, T+1):
+    N, L = map(int, input().split())
+    arr = [list(map(int, input().split())) for _ in range(N)]
+    max_taste = -1
+    for i in range(1<<N):
+        cal_sum, taste_sum = 0, 0
+        for j in range(N):
+            if i & (1<<j):
+                cal_sum += arr[j][1]
+                taste_sum += arr[j][0]
+                if cal_sum > L:
+                    break
+                else:
+                    if taste_sum > max_taste:
+                        max_taste = taste_sum
+
+    print('#{} {}'.format(t, max_taste))
+```
+
+
+
+### 5162. 두가지 빵의 딜레마
+
+```python
+T = int(input())
+for t in range(1, T+1):
+    # 둘 중 낮은 가격으로 총 가격을 나눈 갯수가 가장 적을 수 밖에 없다.
+    A, B, C = map(int, input().split())
+    res = C // min(A, B)
+
+    print('#{} {}'.format(t, res))
+```
+
+
+
+### 4789. 성공적인 공연 기획
+
+```python
+T = int(input())
+for t in range(1, T+1):
+    lst = input()
+    clap, hire = 0, 0
+    for i in range(len(lst)):
+        if clap >= i:
+            clap += int(lst[i])
+        else:
+            while clap < i:
+                hire += 1
+                clap += 1
+            clap += int(lst[i])
+    print('#{} {}'.format(t, hire))
+```
+
+
+
+### 4676. 늘어지는 소리 만들기
+
+```python
+T = int(input())
+for t in range(1, T+1):
+    str1 = input()
+    H = int(input())
+    lst = list(map(int, input().split()))
+    cnt = [0] * (len(str1)+1)
+    res = ''
+    for i in lst:
+        cnt[i] += 1
+    if cnt[0] != 0:
+        res += '-'*cnt[0]
+
+    for j in range(1, len(cnt)):
+        res += str1[j-1] + '-'*cnt[j]
+        
+    print('#{} {}'.format(t, res))
+```
+
+
+
+
+
+### ~~4698. 테네스의 특별한 소수~~
+
+```python
+아직 못품
+```
+
+
+
+### ~~5293. 이진 문자열 복원~~
+
+```python
+아직 못품
+```
+
+
+
+### 오셀로...패배했다...
+
+```python
+
+```
+

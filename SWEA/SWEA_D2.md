@@ -102,6 +102,43 @@ for t in range(1,T+1):
     
 ```
 
+### 재귀로 풀었지만 runtime error...
+
+```python
+res = [[0]]
+def pascal(N):
+    if N == 1:
+        res.append([0, 1, 0])
+        return
+    else:
+        pascal(N-1)
+        triangle = []
+        for i in range(N+2):
+            if i == 0 or i == N+1:
+                triangle.append(0)
+            else:
+                triangle.append(res[N-1][i-1] + res[N-1][i])
+        res.append(triangle)
+        return
+
+
+
+T = int(input())
+for t in range(1, T+1):
+    N = int(input())
+    pascal(N)
+    print('#{}'.format(t))
+    for x in res:
+        if len(x) == 1:
+            continue
+        for y in range(1, len(x)-1):
+            print(x[y], end=' ')
+        print()
+
+```
+
+
+
 
 
 ### 2001. 파리 퇴치
