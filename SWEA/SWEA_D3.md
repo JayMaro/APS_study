@@ -244,46 +244,6 @@ for t in range(1, T + 1):
 
 
 
-### ~~10965. 제곱수 만들기~~ -> 다시 풀어보기
-
-```python
-T = int(input())
-
-prime = [2]
-for i in range(3, int(10000000**(1/2)), 2):
-    for p in prime:
-        if i % p == 0:
-            break
-    else:
-        prime.append(i)
-
-
-
-for t in range(1, T + 1):
-    N = int(input())
-    result = 1
-    if N**(1/2) == int(N**(1/2)):
-        print(f'#{t} 1')
-        continue
-
-    for p in prime:
-        if N < p:
-            break
-        cnt = 0
-        while N % p == 0:
-            cnt += 1
-            N = N//p
-
-        if cnt % 2:
-            result *= p
-        if N == 1:
-            break
-    if N > 1:
-        result *= N
-
-    print(f'#{t} {result}')
-```
-
 
 
 ### 10912. 외로운 문자
@@ -901,6 +861,166 @@ for t in range(1, T+1):
 
 
 
+### 4522. 세상의 모든 팰린드롬
+
+```python
+def new_palin(strx):
+    if len(strx) <= 1:
+        return True
+    if strx[0] == strx[-1] or strx[0] == '?' or strx[-1] == '?':
+        return new_palin(strx[1:-1])
+    else:
+        return False
+
+
+T = int(input())
+for t in range(1, T+1):
+    str1 = input()
+    check = new_palin(str1)
+    if check:
+        print('#{} Exist'.format(t))
+    else:
+        print('#{} Not exist'.format(t))
+```
+
+
+
+### 4579. 세상의 모든 팰린드롬 2
+
+```python
+def new_palin(strx):
+    if len(strx) <= 1:
+        return True
+    if strx[0] == strx[-1]:
+        return new_palin(strx[1:-1])
+    if strx[0] == '*':
+        return True
+    if strx[-1] == '*':
+        return True
+    else:
+        return False
+
+
+T = int(input())
+for t in range(1, T+1):
+    str1 = input()
+    check = new_palin(str1)
+
+    if check:
+        print('#{} Exist'.format(t))
+    else:
+        print('#{} Not exist'.format(t))
+```
+
+
+
+### 4466. 최대 성적표 만들기
+
+```python
+T = int(input())
+for t in range(1, T+1):
+    N, K = map(int, input().split())
+    lst = list(map(int, input().split()))
+    lst.sort(reverse=True)
+    score = 0
+    for i in range(K):
+        score += lst[i]
+    print('#{} {}'.format(t, score))
+```
+
+
+
+### 4406. 모음이 보이지 않는 사람
+
+```python
+T = int(input())
+for test_case in range(1, T+1):
+    str1 = input()
+    str1 = str1.replace('a','')
+    str1 = str1.replace('e', '')
+    str1 = str1.replace('i', '')
+    str1 = str1.replace('o', '')
+    str1 = str1.replace('u', '')
+    print('#{} {}'.format(test_case, str1))
+```
+
+
+
+### 4299. 태혁이의 사랑은 타이밍
+
+```python
+T = int(input())
+for t in range(1, T+1):
+    lst = list(map(int, input().split()))
+    D, H, M = lst[0], lst[1], lst[2]
+    diff_D = D - 11
+    diff_H = H - 11
+    diff_M = M - 11
+    total = diff_D * 1440 + diff_H * 60 + diff_M
+    if total < 0:
+        total = -1
+    print('#{} {}'.format(t, total))
+```
+
+
+
+### 4047. 영준이의 카드 카운팅
+
+```python
+T = int(input())
+for t in range(1, T+1):
+    lst = input()
+    card = {'S': [],
+            'D': [],
+            'H': [],
+            'C': [],}
+    card_num = [13, 13, 13, 13]
+    flag = True
+    for i in range(0, len(lst), 3):
+        if (''.join(lst[i+1:i+3])) in card[lst[i]]:
+            flag = False
+            continue
+        card[lst[i]].append(''.join(lst[i+1:i+3]))
+
+    card_num[0] -= len(card['S'])
+    card_num[1] -= len(card['D'])
+    card_num[2] -= len(card['H'])
+    card_num[3] -= len(card['C'])
+
+
+    if flag:
+        print('#{} '.format(t), end='')
+        for num in card_num:
+            print(num, end=' ')
+        print()
+    else:
+        print('#{} ERROR'.format(t))
+```
+
+
+
+### 3975. 승률 비교하기 -> 출력시 모아서 출력하는 것이 더 빠르다
+
+```python
+T = int(input())
+res = []
+for t in range(1, T+1):
+    lst = list(map(int, input().split()))
+    alice = lst[0]/lst[1]
+    bob = lst[2]/lst[3]
+    if abs(alice - bob) < 10e-10:
+        res.append('DRAW')
+    elif alice > bob:
+        res.append('ALICE')
+    else:
+        res.append('BOB')
+
+for i in range(len(res)):
+    print('#{} {}'.format(i+1, res[i]))
+```
+
+
+
 
 
 ### ~~4698. 테네스의 특별한 소수~~
@@ -919,9 +1039,51 @@ for t in range(1, T+1):
 
 
 
-### 오셀로...패배했다...
+### ~~오셀로...패배했다...~~
 
 ```python
 
+```
+
+
+
+### ~~10965. 제곱수 만들기~~ -> 다시 풀어보기
+
+```python
+T = int(input())
+
+prime = [2]
+for i in range(3, int(10000000**(1/2)), 2):
+    for p in prime:
+        if i % p == 0:
+            break
+    else:
+        prime.append(i)
+
+
+
+for t in range(1, T + 1):
+    N = int(input())
+    result = 1
+    if N**(1/2) == int(N**(1/2)):
+        print(f'#{t} 1')
+        continue
+
+    for p in prime:
+        if N < p:
+            break
+        cnt = 0
+        while N % p == 0:
+            cnt += 1
+            N = N//p
+
+        if cnt % 2:
+            result *= p
+        if N == 1:
+            break
+    if N > 1:
+        result *= N
+
+    print(f'#{t} {result}')
 ```
 

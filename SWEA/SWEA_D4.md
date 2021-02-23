@@ -95,3 +95,34 @@ for _ in range(10):
             break
 ```
 
+
+
+### 길찾기 -> dfs 이용
+
+```python
+def dfs():
+    s = []
+    s += graph[0]
+    visited.append(0)
+
+    while s != []:
+        current = s.pop()
+        if current == 99:
+            return 1
+        if current not in visited:
+            visited.append(current)
+            s += graph[current]
+    else:
+        return 0
+
+
+for test_case in range(1, 11):
+    T, E = map(int, input().split())
+    lst = list(map(int, input().split()))
+    graph = {key: [] for key in range(100)}
+    visited = []
+    for i in range(0, E*2, 2):
+        graph[lst[i]].append(lst[i+1])
+    print('#{} {}'.format(T, dfs()))
+```
+
