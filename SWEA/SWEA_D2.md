@@ -373,11 +373,7 @@ def check_square(iarray, idx):
 
 T = int(input())
 for t in range(1,T+1):
-    iarray = []
-    for i in range(9):
-        ilist = list(map(int, input().split()))
-        iarray.append(ilist)
-    
+    iarray = [list(map(int, input().split())) for _ in range(9)]
     result = 1
 
     for i in range(9):

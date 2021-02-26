@@ -126,3 +126,99 @@ for test_case in range(1, 11):
     print('#{} {}'.format(T, dfs()))
 ```
 
+
+
+### 창용 마을 무리의 개수 -> dfs 와 union find로 풀었지만 union find는 뭔가 엉성하다 다시 풀어보자
+
+```python
+def dfs(p):
+    s = []
+    visited.append(p)
+    s += people[p]
+    while s != []:
+        v = s.pop()
+        if v not in visited:
+            visited.append(v)
+            s += people[v]
+
+
+T = int(input())
+for t in range(1, T+1):
+    N, M = map(int, input().split())
+    people = {key: [] for key in range(1,N+1)}
+    visited = []
+    cnt = 0
+    for _ in range(M):
+        p1, p2 = map(int, input().split())
+        people[p1].append(p2)
+        people[p2].append(p1)
+
+    for i in range(1, N+1):
+        if i not in visited:
+            dfs(i)
+            cnt += 1
+
+    print('#{} {}'.format(t, cnt))
+```
+
+```python
+def union(a, b):
+    if find(a) == find(b):
+        return
+    else:
+        parent[find(a)] = find(b)
+
+
+def find(x):
+    if parent[x] == x:
+        return x
+    else:
+        return find(parent[x])
+
+T = int(input())
+for t in range(1, T+1):
+    N, M = map(int, input().split())
+    parent = {key: key for key in range(1, N+1)}
+    res_lst = []
+    for _ in range(M):
+        p1, p2 = map(int, input().split())
+        union(p1, p2)
+
+    for key, value in parent.items():
+        if key == value:
+            res_lst.append(key)
+    res = len(res_lst)
+
+    print('#{} {}'.format(t, res))
+```
+
+
+
+### 자기 방 찾아가기 ->이건 진짜 개 못했다... 배열이 있다면 바로 배열로 생각하지 말고 카운팅 부터 생각해보자
+
+```python
+T = int(input())
+for t in range(1, T+1):
+    N = int(input())
+    uplst = [i for i in range(1, 400, 2)]
+    downlst = [i for i in range(2, 401, 2)]
+    check = [0 for i in range(200)]
+    for i in range(N):
+        a, b = map(int, input().split())
+        s = min(a, b)
+        e = max(a, b)
+        if s % 2:
+            start = uplst.index(s)
+        else:
+            start = downlst.index(s)
+        if e % 2:
+            end = uplst.index(e)
+        else:
+            end = downlst.index(e)
+        for j in range(start, end+1):
+            check[j] += 1
+    print('#{} {}'.format(t, max(check)))
+```
+
+
+
