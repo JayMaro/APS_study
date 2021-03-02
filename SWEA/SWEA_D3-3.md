@@ -56,6 +56,28 @@ for t in range(1, T+1):
 
 
 
+### 거듭제곱
+
+```python
+def my_pow(N, M):
+    if M == 0:
+        return 1
+    if M == 1:
+        return N
+    else:
+        return N * my_pow(N, M-1)
+
+
+
+T = 10
+for t in range(1, T+1):
+    testcase = int(input())
+    N, M = map(int, input().split())
+    print('#{} {}'.format(testcase, my_pow(N, M)))
+```
+
+
+
 
 
 ### ~~4698. 테네스의 특별한 소수~~
