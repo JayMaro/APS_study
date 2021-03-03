@@ -78,6 +78,45 @@ for t in range(1, T+1):
 
 
 
+### 3456. 직사각형 길이 찾기
+
+```python
+T = int(input())
+for tc in range(1, T+1):
+    lst = map(int, input().split())
+    s = []
+    for i in lst:
+        if i in s:
+            s.remove(i)
+        else:
+            s.append(i)
+    print('#{} {}'.format(tc, s.pop()))
+```
+
+
+
+### 3499. 퍼펙트 셔플
+
+```python
+T = int(input())
+for tc in range(1, T+1):
+    N = int(input())
+    lst = input().split()
+    if len(lst) % 2:
+        s1 = lst[:len(lst) // 2+1]
+        s2 = lst[len(lst) // 2 +1:]
+    else:
+        s1 = lst[:len(lst)//2]
+        s2 = lst[len(lst)//2:]
+    res = []
+    for i in range(len(s1)):
+        res.append(s1[i])
+        if i < len(s2):
+            res.append(s2[i])
+    print('#{}'.format(tc), end=' ')
+    print(*res)
+```
+
 
 
 ### ~~4698. 테네스의 특별한 소수~~
