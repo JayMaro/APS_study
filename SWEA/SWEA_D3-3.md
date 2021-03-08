@@ -119,6 +119,61 @@ for tc in range(1, T+1):
 
 
 
+### 3408. 세가지 합 구하기 -> 반복문을 최대한 줄이자
+
+```python
+T = int(input())
+for tc in range(1, T+1):
+    N = int(input())
+    s1, s2, s3 = 0, 0, 0
+    s1 = N*(N+1)//2
+    s2 = N**2
+    s3 = N*(N+1)
+    print('#{} {} {} {}'.format(tc, s1, s2, s3))
+```
+
+
+
+### 3376. 파도반 수열
+
+```python
+T = int(input())
+for tc in range(1, T+1):
+    triangle = [1, 1, 1]
+    N = int(input())
+    for i in range(3, N):
+        if N == 1 or N == 2 or N == 3:
+            break
+        else:
+            triangle.append(triangle[i-3] + triangle[i-2])
+
+    print('#{} {}'.format(tc, triangle[N-1]))
+```
+
+
+
+### 3314. 보충학습과 평균
+
+```python
+T = int(input())
+for tc in range(1, T+1):
+    lst = list(map(int, input().split()))
+    res = 0
+    for i in lst:
+        if i < 40:
+            res += 40
+        else:
+            res += i
+    res = res//5
+    print('#{} {}'.format(tc, res))
+```
+
+
+
+
+
+
+
 ### ~~4698. 테네스의 특별한 소수~~
 
 ```python
