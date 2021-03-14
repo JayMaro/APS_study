@@ -148,6 +148,29 @@ for t in range(1, T+1):
     print('#{} {}'.format(t, max_taste))
 ```
 
+```python
+def dfs(idx, cal, score):
+    global max_score
+    if idx == N:
+        max_score = max(max_score, score)
+        return
+    dfs(idx+1, cal, score)
+    cal += lst[idx][1]
+    if cal > L:
+        return
+    score += lst[idx][0]
+    dfs(idx+1, cal, score)
+
+
+T = int(input())
+for tc in range(1, T+1):
+    N, L = map(int, input().split())
+    lst = [list(map(int, input().split())) for _ in range(N)]
+    max_score = 0
+    dfs(0, 0, 0)
+    print('#{} {}'.format(tc, max_score))
+```
+
 
 
 
