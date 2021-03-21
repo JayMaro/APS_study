@@ -232,3 +232,18 @@ for t in range(1, T + 1):
     print(f'#{t} {result}')
 ```
 
+
+
+### 3142. 영준이와 신비한 뿔의 숲
+
+```python
+T = int(input())
+for tc in range(1, T+1):
+    N, M = map(int, input().split())
+    tmp = N % M
+    if N//M == 2:
+        tmp = M
+    print('#{} {} {}'.format(tc, M-tmp, tmp))
+
+```
+
