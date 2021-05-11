@@ -1,6 +1,8 @@
 # REST API
 
+MTV에서 T를 클라이언트로 MV를 서버에서 구성
 
+일종의 방법론 => 표준은 아님
 
 
 
@@ -26,3 +28,8 @@ URI는 Dynamic
 
 
 
+1. 자원(Resource) : URI로 표현한다.
+   - 계층구조를 잘 맞춰서 표현한다.
+2. 행위(Methods) : HTTP Methods로 자원의 행위를 표현한다.
+   - GET, POST, PUT, DELETE
+3. 표현(Representations) : JSON의 형태로 데이터를 표현한다.
