@@ -127,5 +127,11 @@ bootstrap에서는 index.html에 넣는다
 
 
 
+npm install을 하면 pip install -r requirements.txt 와 같이 동작한다.
+
+
+
+생성 ROOP를 잘 이용하자!
+
 
 
