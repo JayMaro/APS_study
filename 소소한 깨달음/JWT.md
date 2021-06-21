@@ -51,3 +51,14 @@ REST_FRAMEWORK = {
 이게 있다면 위의 항목들이 모든 views 함수에 대해 데코레이터를 추가하는 효과와 동일하다
 ```
 
+
+
+
+
+https://router.vuejs.org/kr/guide/advanced/navigation-guards.html
+
+
+
+```
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+```
